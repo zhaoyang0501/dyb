@@ -7,9 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.pzy.entity.Seller;
 import com.pzy.entity.User;
-import com.pzy.service.SellerService;
 import com.pzy.service.UserService;
 /***
  * 后台首页，处理后台登录验证权限等操作
@@ -23,8 +21,6 @@ public class IndexController {
 	@Autowired
 	private UserService userService;
 
-	@Autowired
-	private SellerService sellerService;
 	@RequestMapping("center/index")
 	public String center() {
 		return "admin/center/index";
@@ -78,29 +74,6 @@ public class IndexController {
 		httpSession.setAttribute("adminuser", null);
 		return "admin/login";
 	}
-	@RequestMapping("gologin")
-	public String gologin(HttpSession httpSession,String userName,String password,Model model)  {
-		Seller user=sellerService.login(userName, password);
-		model.addAttribute("usernum",userService.findAll().size());
-		model.addAttribute("num1",0);
-    	if("admin".equals(userName)&&"123456".equals(password)){
-    		User admin=new User();  
-    		admin.setUsername("admin");
-    		admin.setPassword("123456");
-    		admin.setName("超级管理员");
-    		httpSession.setAttribute("adminuser", admin);
-    		return "admin/index";
-    	}
-    	else if(user!=null){
-    		httpSession.setAttribute("adminuser", user);
-    		return "admin/index";
-    	}
-    	else{
-    		httpSession.setAttribute("adminuser", null);
-    		model.addAttribute("tip","登陆失败 不存在此用户名或密码!");
-    		return "admin/login";
-    	}
-    	
-	}
+	
 }
 

@@ -2,7 +2,7 @@
     pageEncoding="utf-8"%>
   <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <html>
   <head>
     <meta charset="utf-8">
@@ -67,6 +67,9 @@
   </div>
 
      <script>
+     <c:if test="${projects== null || fn:length(projects) == 0}">
+     	$.toast("抱歉没有找到该电影！");
+     </c:if>
      $(function() {
     	  $(".swiper-container").swiper({
     		  pagination: '.swiper-pagination',

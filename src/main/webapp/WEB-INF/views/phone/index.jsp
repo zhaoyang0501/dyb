@@ -30,9 +30,9 @@
 		  <!-- Slider -->
 		  <div class="swiper-container" data-space-between='10'>
 		    <div class="swiper-wrapper">
-		      <div class="swiper-slide"><img width="100%" src="http://img31.mtime.cn/mg/2016/03/18/115924.94184794_270X405X4.jpg" alt=""></div>
-		      <div class="swiper-slide"><img width="100%" src="http://img31.mtime.cn/mg/2016/01/28/092553.55103474_270X405X4.jpg" alt=""></div>
-		      <div class="swiper-slide"><img width="100%"  src="http://img31.mtime.cn/mg/2016/03/18/115924.94184794_270X405X4.jpg" alt=""></div>
+		      <div class="swiper-slide"><a href="viewmovie?id=1"><img width="100%" src="http://img31.mtime.cn/mg/2016/03/18/115924.94184794_270X405X4.jpg" alt=""></a></div>
+		      <div class="swiper-slide"><a href="viewmovie?id=2"><img width="100%" src="http://img31.mtime.cn/mg/2016/01/28/092553.55103474_270X405X4.jpg" alt=""></a></div>
+		      <div class="swiper-slide"><a href="viewmovie?id=2"><img width="100%"  src="http://img31.mtime.cn/mg/2016/03/18/115924.94184794_270X405X4.jpg" alt=""></a></div>
 		    </div>
 		    <div class="swiper-pagination"></div>
 		  </div>

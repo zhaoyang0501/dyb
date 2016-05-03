@@ -21,7 +21,6 @@ import com.pzy.entity.Project;
 import com.pzy.entity.User;
 import com.pzy.service.CategoryService;
 import com.pzy.service.ProjectService;
-import com.pzy.service.SellerService;
 import com.pzy.service.UserService;
 /***
  * 前台，首页各种连接登陆等
@@ -39,8 +38,6 @@ public class PhoneController {
 	private CategoryService categoryService;
 	@Autowired
 	private ProjectService projectService;
-	@Autowired
-	private SellerService sellerService;
 	@InitBinder  
 	protected void initBinder(HttpServletRequest request,   ServletRequestDataBinder binder) throws Exception {   
 	    binder.registerCustomEditor(Date.class, new CustomDateEditor(new SimpleDateFormat("yyyy-MM-dd"), true)); 
@@ -53,7 +50,6 @@ public class PhoneController {
 	@RequestMapping("index")
 	public String index(Model model,HttpSession httpSession) {
 		httpSession.setAttribute("user", userService.find(1l));
-		model.addAttribute("likes",sellerService.findTop());
 		return "phone/index";
 	}
 	@RequestMapping("about")
@@ -62,7 +58,6 @@ public class PhoneController {
 	}
 	@RequestMapping("category")
 	public String category(Model model,Long id) {
-		model.addAttribute("sellers",sellerService.findByCategory(id));
 		return "phone/category";
 	}
 	@RequestMapping("movie")
@@ -83,13 +78,6 @@ public class PhoneController {
 		model.addAttribute("msgs",categoryService.findByProject(projectService.find(id)));
 		return "phone/viewmovie";
 	}
-	@RequestMapping("seller")
-	public String seller(Model model,Long id) {
-		model.addAttribute("seller",sellerService.find(id));
-		model.addAttribute("projects",projectService.findBySeller(id));
-		return "phone/seller";
-	}
-	
 	@RequestMapping("msgadd")
 	public String msgadd(Model model,Category category ,Double score,HttpSession httpSession,RedirectAttributes redirectAttributes) {
 		User user=(User)httpSession.getAttribute("user");
